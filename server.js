@@ -1,7 +1,7 @@
 let express = require('express');
 let app = express();
 let port = 8080;
-let book = require('./app/routes/terms');
+let terms = require('./app/routes/terms');
 
 app.route("/terms/:tid/longest-preview-media-url")
     .get(terms.getLongestPreviewMediaURL);
