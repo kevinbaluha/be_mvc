@@ -33,6 +33,6 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha --timeout 10000",
-    "coverage": "node server3.js"
+    "coverage": "node coverage_server.js"
   }
 }

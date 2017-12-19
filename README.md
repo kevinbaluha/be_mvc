@@ -1,9 +1,14 @@
 * Notes:
-    to Run in Docker Container.
-        <ul>
-        <li>1. docker build  -t  be_mvc</li>
-        <li>2. docker run -p 8081:8080 be_mvc</li>
-        </ul>
+    <ul> 
+        <li>
+        <ul>to Run in Docker Container.
+        <li>docker build  -t  be_mvc</li>
+        <li>docker run -p 8081:8080 be_mvc</li>
+        </ul></li>
+        <li><ul>coverage: visit /coverage</ul></li>
+        <li><ul>test: npm test</ul></li>
+    </ul>
+<
 
 Backend Code Challenge
 
