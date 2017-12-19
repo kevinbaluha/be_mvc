@@ -1,0 +1,9 @@
+{
+"Vocabulary": {"index": 0},
+"Endpoint": "/terms/:tid/longest-preview-media-url",
+"Services": {
+    "videos":"http://faild6api.gaia.com/videos/term/${tid}", 
+    "vocabulary": "http://faild6api.gaia.com/vocabulary/1/${tid}",
+    "media": "http://faild6api.gaia.com/media/${previewNid}"
+    }
+}

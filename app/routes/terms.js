@@ -2,6 +2,7 @@
 
 let terms = require('../model/terms');
 let Client = require('node-rest-client').Client;
+let config = require('config');
 
 /*
  * GET /book route to retrieve all the books.
@@ -19,7 +20,8 @@ function RestCall( r_parms, url , restcb, cb_options) {
         });
 
     rest_req.on('error', function (err) {
-        console.log('request error', err);
+        //console.log('request error', err);
+        cb_options.res.status(503).send(''/*Vocabulary Request Has No Data'*/); 
         });
 
     }
@@ -32,10 +34,11 @@ function HandleVocabulary(data, response, options) {
         return;
         }
 
-    options.item = data.response.terms.term[0];
+    let idx = config.get('Vocabulary.index');
+    options.item = data.response.terms.term[idx];
     
     RestCall({ tid: options.item.$.tid }, 
-            'http://d6api.gaia.com/videos/term/${tid}',
+            config.get('Services.videos'),
             VideoScan,   
             options);
     }
@@ -61,7 +64,7 @@ function VideoScan(data, response, options) {
         });
 
     RestCall(options.answer, 
-            'http://d6api.gaia.com/media/${previewNid}',
+            config.get('Services.media'),
             ReturnResponse,
             options);
 
@@ -87,7 +90,8 @@ function getLongestPreviewMediaURL(req, res) {
 
     let answer  = new terms.MediaUrl({"bcHLS": '', "titleNid": -1, "previewNid": -1, "previewDuration": -1});
 
-    RestCall({ tid: req.params.tid }, 'http://d6api.gaia.com/vocabulary/1/${tid}', 
+    RestCall({ tid: req.params.tid }, 
+            config.get('Services.vocabulary'),
             HandleVocabulary,   
             { "answer": answer, "res": res });
     }
