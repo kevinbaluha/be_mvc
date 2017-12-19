@@ -1,3 +1,8 @@
+* Notes:
+    to Run in Docker Container.
+        1. docker build  -t  be_mvc
+        2. docker run -p 8081:8080 be_mvc
+
 Backend Code Challenge
 
 Create an express application exposing a single endpoint (/terms/{tid}/longest-preview-media-url) that returns the longest preview media URL. The term id ({tid}) will be used to supply an initial, internal API call to the Gaia backend.

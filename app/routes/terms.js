@@ -1,7 +1,7 @@
 'use strict'
 
 let terms = require('../model/terms');
-var Client = require('node-rest-client').Client;
+let Client = require('node-rest-client').Client;
 
 /*
  * GET /book route to retrieve all the books.
@@ -9,7 +9,7 @@ var Client = require('node-rest-client').Client;
 
 function RestCall( r_parms, url , restcb, cb_options) {
     let client = new Client();
-    var args = {
+    let args = {
         path: r_parms,
         headers: { "Content-Type": "application/json" }
         };
@@ -85,16 +85,11 @@ function getLongestPreviewMediaURL(req, res) {
     //console.log(req);
     res.setHeader('Content-Type', 'application/json');
 
-    var answer  = new terms.MediaUrl({"bcHLS": '', "titleNid": -1, "previewNid": -1, "previewDuration": -1});
+    let answer  = new terms.MediaUrl({"bcHLS": '', "titleNid": -1, "previewNid": -1, "previewDuration": -1});
 
     RestCall({ tid: req.params.tid }, 'http://d6api.gaia.com/vocabulary/1/${tid}', 
             HandleVocabulary,   
             { "answer": answer, "res": res });
     }
 
-function dude(req, res) {
-    options.res.setHeader('Content-Type', 'application/json');
-    options.res.json({"dude":"sup"});
-    }
-
-module.exports = { getLongestPreviewMediaURL , dude};
+module.exports = { getLongestPreviewMediaURL };
