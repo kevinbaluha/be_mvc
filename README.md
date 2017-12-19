@@ -1,7 +1,9 @@
 * Notes:
     to Run in Docker Container.
-        1. docker build  -t  be_mvc
-        2. docker run -p 8081:8080 be_mvc
+        <ul>
+        <li>1. docker build  -t  be_mvc</li>
+        <li>2. docker run -p 8081:8080 be_mvc</li>
+        </ul>
 
 Backend Code Challenge
 
