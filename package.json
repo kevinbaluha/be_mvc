@@ -27,7 +27,7 @@
     "url": "https://github.com/kevinbaluha/be_mvc/issues"
   },
   "scripts": {
-    "start": "SET NODE_ENV=dev && node server.js",
+    "start": "node server.js",
     "test": "mocha --timeout 10000"
   }
 }
