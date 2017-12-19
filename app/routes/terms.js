@@ -21,12 +21,14 @@ function RestCall( r_parms, url , restcb, cb_options) {
     rest_req.on('error', function (err) {
         console.log('request error', err);
         });
+
     }
+
 
 
 function HandleVocabulary(data, response, options) {
     if (parseInt(data.response.$.totalCount) < 1) {
-        options.res.status(404).send('Vocabulary Request Has No Data'); 
+        options.res.status(404).send(''/*Vocabulary Request Has No Data'*/); 
         return;
         }
 
@@ -75,10 +77,14 @@ function ReturnResponse(data, response, options) {
         }
         
     options.answer.bcHLS = data.response.mediaUrls.$.bcHLS;
-    options.res.send(options.answer);
+    options.res.setHeader('Content-Type', 'application/json');
+    options.res.json(options.answer);
     }
 
 function getLongestPreviewMediaURL(req, res) {
+    //console.log(req);
+    res.setHeader('Content-Type', 'application/json');
+
     var answer  = new terms.MediaUrl({"bcHLS": '', "titleNid": -1, "previewNid": -1, "previewDuration": -1});
 
     RestCall({ tid: req.params.tid }, 'http://d6api.gaia.com/vocabulary/1/${tid}', 
@@ -86,4 +92,9 @@ function getLongestPreviewMediaURL(req, res) {
             { "answer": answer, "res": res });
     }
 
-module.exports = { getLongestPreviewMediaURL };
+function dude(req, res) {
+    options.res.setHeader('Content-Type', 'application/json');
+    options.res.json({"dude":"sup"});
+    }
+
+module.exports = { getLongestPreviewMediaURL , dude};
